@@ -4,6 +4,7 @@ abstract class Day(dayNumber: Int) {
     abstract val title: String
     protected val inputString: String by lazy { getResource(dayNumber).readText() }
     protected val inputLines: List<String> by lazy { getResource(dayNumber).readLines().filter { it != "" } }
+    protected val inputInts: List<Int> by lazy { inputLines.map { it.toInt() } }
 
     abstract fun part1(): Any
     abstract fun part2(): Any
