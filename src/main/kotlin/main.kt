@@ -1,4 +1,4 @@
 fun main(args: Array<String>) {
-    val day = Day8()
+    val day = Day10()
     day.run()
 }
