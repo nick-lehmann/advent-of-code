@@ -88,6 +88,14 @@ class AOCTestCase(TestCase):
         return {float(line.strip()) for line in self._puzzle_lines}
 
     @property
+    def map(self) -> List[List[chr]]:
+        map = []
+        for line in self.lines:
+            row = list(line.strip())
+            map += [row]
+        return map
+
+    @property
     def example_solution1(self) -> int:
         with open(self.day.puzzle_example_solution1_path) as f:
             return int(f.readline().strip("\n"))

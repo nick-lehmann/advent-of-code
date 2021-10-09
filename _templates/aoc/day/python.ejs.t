@@ -1,8 +1,7 @@
 ---
-to: python/<%= year %>/day<%= day %>.py
+to: python/<%= year %>/day<%= dayPadded %>.py
 ---
 from utils import AOCTestCase
-import unittest
 
 
 class <%= name %>(AOCTestCase):
@@ -11,9 +10,3 @@ class <%= name %>(AOCTestCase):
 
     def part2(self) -> int:
         pass
-
-
-if __name__ == "__main__":
-    unittest.main()
-
-

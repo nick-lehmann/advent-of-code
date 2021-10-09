@@ -1,5 +1,4 @@
 from utils import AOCTestCase
-import unittest
 
 
 class BinaryBoarding(AOCTestCase):
@@ -15,7 +14,3 @@ class BinaryBoarding(AOCTestCase):
 
     def part2(self):
         pass
-
-
-if __name__ == "__main__":
-    unittest.main()

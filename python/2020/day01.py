@@ -1,6 +1,5 @@
 from itertools import combinations
 from utils import AOCTestCase
-import unittest
 
 
 class ReportRepair(AOCTestCase):
@@ -17,7 +16,3 @@ class ReportRepair(AOCTestCase):
             remainder = 2020 - sum(combo)
             if remainder in numbers:
                 return combo[0] * combo[1] * remainder
-
-
-if __name__ == "__main__":
-    unittest.main()
