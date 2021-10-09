@@ -23,7 +23,33 @@ Features
 
 | Language   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
 | ---------- | --- | --- | --- | --- | --- | --- | --- |
-| Python     |     |     |     |     |     |     |     |
+| Python     | x   |     |     |     |     |     | x   |
 | Typescript |     |     |     |     |     |     |     |
 | Kotlin     |     |     |     |     |     |     |     |
 | Rust       |     |     |     |     |     |     |     |
+
+
+## Generate new days
+
+This project uses [hygen](https://github.com/jondot/hygen) to create new days.
+
+```
+> brew install hygen
+```
+
+Generate a new day
+
+```
+> hygen python day
+✔ What's the year? · 2020
+✔ What's the day? · 9
+✔ What's the name of the day? · Something
+
+Loaded templates: _templates
+       added: exercises/2020/09/example_solution.txt
+       added: exercises/2020/09/example.txt
+       added: exercises/2020/09/puzzle_solution1.txt
+       added: exercises/2020/09/puzzle_solution2.txt
+       added: exercises/2020/09/puzzle.txt
+       added: python/2020/day9.py
+```

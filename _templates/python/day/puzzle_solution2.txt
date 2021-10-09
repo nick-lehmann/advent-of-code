@@ -1,0 +1,3 @@
+---
+to: exercises/<%= year %>/<%= dayPadded %>/puzzle_solution2.txt
+---
