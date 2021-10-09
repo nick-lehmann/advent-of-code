@@ -1,3 +1,4 @@
+import os
 import re
 from typing import List
 import inspect
@@ -5,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from unittest import TestCase
 import unittest
+from enum import Enum
 
 
 @dataclass
@@ -13,12 +15,12 @@ class AOCDay:
     year: int
 
     @property
-    def padded_day(self) -> str:
+    def paddedday(self) -> str:
         return str(self.day).rjust(2, "0")
 
     @property
     def directory(self) -> Path:
-        return Path(f"../../exercises/{self.year}/{self.padded_day}")
+        return Path(f"../../exercises/{self.year}/{self.paddedday}")
 
     @property
     def puzzle_path(self) -> Path:
@@ -37,13 +39,17 @@ class AOCDay:
         return self.directory / "example.txt"
 
     @property
-    def puzzle_example_solution_path(self) -> Path:
-        return self.directory / "example_solution.txt"
+    def puzzle_example_solution1_path(self) -> Path:
+        return self.directory / "example_solution1.txt"
+
+    @property
+    def puzzle_example_solution2_path(self) -> Path:
+        return self.directory / "example_solution2.txt"
 
 
 class AOCTestCase(TestCase):
     _puzzle_lines: List[str]
-    _day: AOCDay
+    _mode: str
 
     @classmethod
     def setUpClass(cls):
@@ -53,10 +59,17 @@ class AOCTestCase(TestCase):
             super(AOCTestCase, cls).setUpClass()
 
     def setUp(self) -> None:
-        self._day = get_aoc_day()
-        with open(self._day.puzzle_path) as f:
+        with open(self.day.puzzle_path) as f:
             self._puzzle_lines = f.readlines()
+
+        self._mode = os.environ.get("MODE", "prod")
         return super().setUp()
+
+    @property
+    def day(self) -> AOCDay:
+        filename = inspect.stack()[-1].filename
+        match = re.search(r".*/(\d+)/day(\d+)\.py", filename)
+        return AOCDay(year=int(match.group(1)), day=int(match.group(2)))
 
     @property
     def lines(self) -> List[str]:
@@ -75,14 +88,36 @@ class AOCTestCase(TestCase):
         return {float(line.strip()) for line in self._puzzle_lines}
 
     @property
+    def example_solution1(self) -> int:
+        with open(self.day.puzzle_example_solution1_path) as f:
+            return int(f.readline().strip("\n"))
+
+    @property
+    def example_solution2(self) -> int:
+        with open(self.day.puzzle_example_solution2_path) as f:
+            return int(f.readline().strip("\n"))
+
+    @property
     def puzzle_solution1(self) -> int:
-        with open(self._day.puzzle_solution1_path) as f:
+        with open(self.day.puzzle_solution1_path) as f:
             return int(f.readline().strip("\n"))
 
     @property
     def puzzle_solution2(self) -> int:
-        with open(self._day.puzzle_solution2_path) as f:
+        with open(self.day.puzzle_solution2_path) as f:
             return int(f.readline().strip("\n"))
+
+    @property
+    def solution1(self) -> int:
+        if self._mode == "prod":
+            return self.puzzle_solution1
+        return self.example_solution1
+
+    @property
+    def solution2(self) -> int:
+        if self._mode == "prod":
+            return self.puzzle_solution2
+        return self.example_solution2
 
     # Override in concrete test case
     def part1(self) -> int:
@@ -94,16 +129,10 @@ class AOCTestCase(TestCase):
 
     def test_part1(self):
         result = self.part1()
-        solution = self.puzzle_solution1
+        solution = self.solution1
         self.assertEqual(result, solution)
 
     def test_part2(self):
         result = self.part2()
-        solution = self.puzzle_solution2
+        solution = self.solution2
         self.assertEqual(result, solution)
-
-
-def get_aoc_day() -> AOCDay:
-    filename = inspect.stack()[-1].filename
-    match = re.search(r".*/(\d+)/day(\d+)\.py", filename)
-    return AOCDay(year=int(match.group(1)), day=int(match.group(2)))
