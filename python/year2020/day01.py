@@ -1,5 +1,5 @@
 from itertools import combinations
-from utils import AOCTestCase
+from ..utils import AOCTestCase
 
 
 class ReportRepair(AOCTestCase):
