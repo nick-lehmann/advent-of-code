@@ -1,5 +1,6 @@
 ---
-to: python/<%= year %>/day<%= dayPadded %>.py
+to: python/aoc/year<%= year %>/day<%= dayPadded %>.py
+unless_exists: true
 ---
 from utils import AOCTestCase
 

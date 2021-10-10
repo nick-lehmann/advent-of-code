@@ -19,7 +19,6 @@ module.exports = {
     ];
 
     return prompter.prompt(questions).then((answers) => {
-      console.log(answers);
       answers["dayPadded"] = answers["day"].padStart(2, "0");
       return answers;
     });
