@@ -1,8 +1,6 @@
-import unittest
 from dataclasses import dataclass
 from typing import List
-
-from utils import AOCTestCase
+from ..utils import AOCTestCase
 
 
 @dataclass
@@ -27,10 +25,13 @@ def find_trees(map: Map, slope: Point) -> int:
 
 
 class TobogganTrajectory(AOCTestCase):
-    def part1(self) -> int:
-        return find_trees(self.map, Point(x=1, y=3))
+    day = 3
+    year = 2020
 
-    def part2(self) -> int:
+    def part1(self, content: str) -> int:
+        return find_trees(self.map(content), Point(x=1, y=3))
+
+    def part2(self, content: str) -> int:
         points = [
             Point(x=1, y=1),
             Point(x=3, y=1),
@@ -39,10 +40,7 @@ class TobogganTrajectory(AOCTestCase):
             Point(x=1, y=2),
         ]
         product = 1
+        map = self.map(content)
         for point in points:
             product *= find_trees(map, point)
         return product
-
-
-if __name__ == "__main__":
-    unittest.main()

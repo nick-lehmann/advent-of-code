@@ -1,3 +1,3 @@
 ---
-to: exercises/<%= year %>/<%= dayPadded %>/example_solution.txt
+to: exercises/<%= year %>/<%= dayPadded %>/example_solution1.txt
 ---
