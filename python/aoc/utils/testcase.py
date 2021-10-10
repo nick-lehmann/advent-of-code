@@ -35,6 +35,9 @@ class AOCTestCase(TestCase):
             return lines[:-1]
         return lines
 
+    def blocks(self, content: str) -> List[str]:
+        return content.split("\n\n")
+
     def ints(self, content: str) -> List[int]:
         return [int(line.strip()) for line in self.lines(content)]
 
