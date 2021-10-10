@@ -3,3 +3,5 @@ from .day02 import *
 from .day03 import *
 from .day04 import *
 from .day05 import *
+from .day06 import *
+from .day07 import *
