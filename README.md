@@ -18,15 +18,16 @@ Features
 - 5 Run single tests or all
 - 6 Benchmark command
 - 7 Generate boilerplate for problems
-- 8 Common utils per language in separate file
+- 8 Common utils per language in a separate file
 
 
-| Language   | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
-| ---------- | --- | --- | --- | --- | --- | --- | --- |
-| Python     | x   |     |     |     |     |     | x   |
-| Typescript |     |     |     |     |     |     |     |
-| Kotlin     |     |     |     |     |     |     |     |
-| Rust       |     |     |     |     |     |     |     |
+| Language   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   |
+| ---------- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Python     | x   | x   | x   | x   | x   |     | x   | x   |
+| Typescript |     |     |     |     |     |     |     |     |
+| Kotlin     |     |     |     |     |     |     |     |     |
+| Go         |     |     |     |     |     |     |     |     |
+| Rust       |     |     |     |     |     |     |     |     |
 
 
 ## Generate new days

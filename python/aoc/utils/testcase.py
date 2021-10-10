@@ -73,11 +73,17 @@ class AOCTestCase(TestCase):
 
         try:
             input = self.exercise.get_task(AOCFile.Puzzle)
-            solution = self.exercise.get_solution(AOCFile.PuzzleSolution1)
-            result = self.part1(input)
-            self.assertEqual(result, solution)
         except RuntimeError:
             raise unittest.SkipTest("No task found for this test")
+
+        result = self.part1(input)
+
+        try:
+            solution = self.exercise.get_solution(AOCFile.PuzzleSolution1)
+            self.assertEqual(result, solution)
+        except RuntimeError:
+            # Still solving, no solution present
+            print(f"Solution to {self.year}/{self.day}: {result}")
 
     def test_part2(self):
         try:
@@ -86,14 +92,16 @@ class AOCTestCase(TestCase):
         except RuntimeError:
             raise unittest.SkipTest("No example found for this test")
 
-        result = self.part2(input)
-        self.assertEqual(result, solution)
-
         try:
             input = self.exercise.get_task(AOCFile.Puzzle)
-            solution = self.exercise.get_solution(AOCFile.PuzzleSolution2)
         except RuntimeError:
             raise unittest.SkipTest("No task found for this test")
 
         result = self.part2(input)
-        self.assertEqual(result, solution)
+
+        try:
+            solution = self.exercise.get_solution(AOCFile.PuzzleSolution2)
+            self.assertEqual(result, solution)
+        except RuntimeError:
+            # Still solving, no solution present
+            print(f"Solution to {self.year}/{self.day}: {result}")
