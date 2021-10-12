@@ -11,7 +11,7 @@ abstract class Day(dayNumber: Int) {
 
     private fun getResource(day: Int): File {
         val filename = day.toString().padStart(2, '0')
-        return File("src/main/resources/$filename.txt")
+        return File("/Users/nick/Projekte/advent-of-code/exercises/2020/$filename/puzzle.txt")
     }
 
     public fun run() {
