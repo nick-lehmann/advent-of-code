@@ -1,3 +1,4 @@
+# Link: https://adventofcode.com/2020/day/8
 from dataclasses import dataclass
 from enum import Enum
 from typing import Iterable, List

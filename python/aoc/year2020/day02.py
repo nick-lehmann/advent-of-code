@@ -1,3 +1,4 @@
+# Link: https://adventofcode.com/2020/day/2
 from typing import List
 import re
 from operator import xor

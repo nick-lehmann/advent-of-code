@@ -2,6 +2,7 @@
 to: python/aoc/year<%= year %>/day<%= dayPadded %>.py
 unless_exists: true
 ---
+# Link: https://adventofcode.com/<%= year %>/day/<%= day %>
 from ..utils import AOCTestCase
 
 

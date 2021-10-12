@@ -1,3 +1,4 @@
+# Link: https://adventofcode.com/2020/day/6
 from string import ascii_lowercase
 from typing import List
 from ..utils import AOCTestCase
