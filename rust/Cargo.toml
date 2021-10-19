@@ -10,3 +10,4 @@ name = "advent_of_code"
 path = "src/lib.rs"
 
 [dependencies]
+itertools = "0.10.1"
