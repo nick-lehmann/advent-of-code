@@ -54,3 +54,7 @@ Loaded templates: _templates
        added: exercises/2020/09/puzzle.txt
        added: python/2020/day9.py
 ```
+
+
+TODO:
+- Helpers for different kinds of maps (e.g. AOC Day 11)

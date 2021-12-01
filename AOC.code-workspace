@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "python"
+    },
+    {
+      "path": "rust"
+    },
+    {
+      "path": "exercises"
+    }
+  ],
+  "settings": {}
+}

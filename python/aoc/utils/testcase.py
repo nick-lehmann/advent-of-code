@@ -21,7 +21,8 @@ class AOCTestCase(TestCase):
     @classmethod
     def setUpClass(cls):
         if cls is AOCTestCase:
-            raise unittest.SkipTest("%s is an abstract base class" % cls.__name__)
+            raise unittest.SkipTest(
+                "%s is an abstract base class" % cls.__name__)
         else:
             super(AOCTestCase, cls).setUpClass()
 
@@ -83,7 +84,7 @@ class AOCTestCase(TestCase):
             self.assertEqual(result, solution)
         except RuntimeError:
             # Still solving, no solution present
-            print(f"Solution to {self.year}/{self.day}: {result}")
+            print(f"Solution to {self.year}/{self.day} part1: {result}")
 
     def test_part2(self):
         try:
@@ -104,4 +105,4 @@ class AOCTestCase(TestCase):
             self.assertEqual(result, solution)
         except RuntimeError:
             # Still solving, no solution present
-            print(f"Solution to {self.year}/{self.day}: {result}")
+            print(f"Solution to {self.year}/{self.day} part2: {result}")
