@@ -1,0 +1,21 @@
+---
+to: exercises/<%= year %>/<%= dayPadded %>.yaml
+unless_exists: true
+---
+inputs:
+  example: &example |
+
+  puzzle: &puzzle |
+
+tests:
+  part1:
+    - input: *example
+      solution: 0
+    - input: *puzzle
+      solution: 0
+  part2:
+    - input: *example
+      solution: 0
+    - input: *puzzle
+      solution: 0
+

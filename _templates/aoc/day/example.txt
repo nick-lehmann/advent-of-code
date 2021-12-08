@@ -1,4 +1,0 @@
----
-to: exercises/<%= year %>/<%= dayPadded %>/example.txt
-unless_exists: true
----
