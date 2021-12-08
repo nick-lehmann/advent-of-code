@@ -52,12 +52,16 @@ for (const [partName, parts] of Object.entries(config.tests)) {
     
     const parsedInput = callback.parse(input)
     
-    // @ts-ignore
-    const result = callback[partName](parsedInput)
-    console.log(`${partName} ${part}: ${result}`)
-    if (result !== solution) {
-      console.error(`${partName} ${part} failed`)
-      process.exit(1)
+    try {
+      // @ts-ignore
+      const result = callback[partName](parsedInput)
+      console.log(`${partName} ${part}: ${result}`)
+      if (result !== solution) {
+        console.error(`${partName} ${part} failed`)
+        process.exit(1)
+      }
+    } catch (e) {
+      console.log('Error')
     }
   }
 }
