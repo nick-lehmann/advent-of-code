@@ -1,0 +1,17 @@
+inputs:
+  example: &example |
+    0,3,6
+  puzzle: &puzzle |
+    
+
+tests:
+  part1:
+    - input: *example
+      solution: 436
+    - input: *puzzle
+      solution:  
+  part2:
+    - input: *example
+      solution: 
+    - input: *puzzle
+      solution: 

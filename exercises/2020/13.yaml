@@ -1,0 +1,19 @@
+inputs:
+  example: &example |
+    939
+    7,13,x,x,59,x,31,19
+  puzzle: &puzzle |
+    1005162
+    19,x,x,x,x,x,x,x,x,41,x,x,x,x,x,x,x,x,x,823,x,x,x,x,x,x,x,23,x,x,x,x,x,x,x,x,17,x,x,x,x,x,x,x,x,x,x,x,29,x,443,x,x,x,x,x,37,x,x,x,x,x,x,13
+
+tests:
+  part1:
+    - input: *example
+      solution: 295
+    - input: *puzzle
+      solution: 2215 
+  part2:
+    - input: *example
+      solution: 1068781
+    - input: *puzzle
+      solution: 
