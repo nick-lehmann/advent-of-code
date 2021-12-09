@@ -28,3 +28,10 @@ class InputMixin:
             row = list(line.strip())
             map += [row]
         return map
+
+    def intmap(self, content: str) -> List[List[int]]:
+        map = []
+        for line in self.lines(content):
+            row = [int(c) for c in line.strip()]
+            map += [row]
+        return map
