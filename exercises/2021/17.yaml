@@ -1,0 +1,18 @@
+inputs:
+  example: &example |
+    target area: x=20..30, y=-10..-5
+  puzzle: &puzzle |
+    target area: x=57..116, y=-198..-148
+
+tests:
+  part1:
+    - input: *example
+      solution: 45
+    - input: *puzzle
+      solution: 19503
+  part2:
+    - input: *example
+      solution: 112
+    - input: *puzzle
+      solution: 0
+

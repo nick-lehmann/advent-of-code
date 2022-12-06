@@ -1,0 +1,46 @@
+inputs:
+  example: &example |
+    start-A
+    start-b
+    A-c
+    A-b
+    b-d
+    A-end
+    b-end
+  puzzle: &puzzle |
+    QR-da
+    QR-end
+    QR-al
+    start-op
+    zh-iw
+    zh-start
+    da-PF
+    op-bj
+    iw-QR
+    end-HR
+    bj-PF
+    da-LY
+    op-PF
+    bj-iw
+    end-da
+    bj-zh
+    HR-iw
+    zh-op
+    zh-PF
+    HR-bj
+    start-PF
+    HR-da
+    QR-bj
+
+tests:
+  part1:
+    - input: *example
+      solution: 10
+    - input: *puzzle
+      solution: 5576
+  part2:
+    - input: *example
+      solution: 36
+    - input: *puzzle
+      solution: 152837
+

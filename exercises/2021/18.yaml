@@ -1,0 +1,17 @@
+inputs:
+  example: &example |
+    [[[[[4,3],4],4],[7,[[8,4],9]]],[1,1]]
+  puzzle: &puzzle |
+
+tests:
+  part1:
+    - input: *example
+      solution: 0
+    - input: *puzzle
+      solution: 0
+  part2:
+    - input: *example
+      solution: 0
+    - input: *puzzle
+      solution: 0
+

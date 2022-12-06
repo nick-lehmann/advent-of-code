@@ -1,0 +1,20 @@
+inputs:
+  example: &example |
+    Player 1 starting position: 4
+    Player 2 starting position: 8
+  puzzle: &puzzle |
+    Player 1 starting position: 4
+    Player 2 starting position: 6
+
+tests:
+  part1:
+    - input: *example
+      solution: 739785
+    - input: *puzzle
+      solution: 888735
+  part2:
+    - input: *example
+      solution: 444356092776315
+    - input: *puzzle
+      solution: 0
+
