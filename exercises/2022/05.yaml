@@ -536,5 +536,5 @@ tests:
     - input: *example
       solution: MCD
     - input: *puzzle
-      solution: 0
+      solution: VRQWPDSGP
 
