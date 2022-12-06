@@ -31,7 +31,7 @@ class AOCTestCase(TestCase, InputMixin):
                 input = test_config[i]["input"]
                 solution = test_config[i]["solution"]
 
-                result = str(getattr(self, test_name)(input))
+                result = getattr(self, test_name)(input)
                 self.assertEqual(result, solution)
 
     def part1(self, content: str) -> int:
