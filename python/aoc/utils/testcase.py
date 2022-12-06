@@ -13,8 +13,7 @@ class AOCTestCase(TestCase, InputMixin):
     @classmethod
     def setUpClass(cls):
         if cls is AOCTestCase:
-            raise unittest.SkipTest(
-                "%s is an abstract base class" % cls.__name__)
+            raise unittest.SkipTest("%s is an abstract base class" % cls.__name__)
         else:
             super(AOCTestCase, cls).setUpClass()
 
@@ -26,14 +25,14 @@ class AOCTestCase(TestCase, InputMixin):
 
     def test(self):
         config = self.aoc
-        for test_name, test_config in config['tests'].items():
+        for test_name, test_config in config["tests"].items():
             for i in range(len(test_config)):
-                print(f"Testing {test_name}") 
-                input = test_config[i]['input'] 
-                solution = int(test_config[i]['solution']) 
-                
-                result = getattr(self,test_name)(input)
-                self.assertEqual(result, solution) 
+                print(f"Testing {test_name}")
+                input = test_config[i]["input"]
+                solution = test_config[i]["solution"]
+
+                result = str(getattr(self, test_name)(input))
+                self.assertEqual(result, solution)
 
     def part1(self, content: str) -> int:
         pass
