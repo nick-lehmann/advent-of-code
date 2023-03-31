@@ -12,7 +12,7 @@ class RambunctiousRecitation(AOCTestCase):
         turn = 0
         current_number = 0
         for i, n in enumerate(content.strip("\n").split(",")):
-            x[int(n)] = i+1
+            x[int(n)] = i + 1
             turn += 1
             current_number = n
 

@@ -3,11 +3,17 @@ name = "rust"
 version = "0.1.0"
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [lib]
 name = "advent_of_code"
 path = "src/lib.rs"
 
 [dependencies]
+grid = "0.9.0"
 itertools = "0.10.1"
+regex = "1.7.3"
+log = "0.4.17"
+serde = { version = "1.0.159", features = ["derive"] }
+serde_yaml = "0.9.19"
+paste = "1.0.12"
+test-log = "0.2.11"
+env_logger = "0.10.0"

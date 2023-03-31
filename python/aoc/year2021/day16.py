@@ -3,11 +3,12 @@ from ..utils import AOCTestCase
 from typing import Any, List, Optional
 from dataclasses import dataclass
 
+
 @dataclass
 class Packet:
-    version:int
+    version: int
     type: int
-    subpackets: List['Packet']
+    subpackets: List["Packet"]
     literal: Optional[int] = None
     size: Optional[int] = None
 
@@ -20,7 +21,7 @@ class PacketDecoder(AOCTestCase):
         line = self.lines(content)[0]
         binary_line = "".join(format(int(x, 16), "04b") for x in line)
         packet = parser(binary_line)
-        
+
         return packet
 
     def part1(self, content: str) -> int:
@@ -28,7 +29,6 @@ class PacketDecoder(AOCTestCase):
 
     def part2(self, content: str) -> int:
         return operate(self.read(content))
-
 
 
 def parser(line: str) -> Packet:
@@ -46,7 +46,13 @@ def parser(line: str) -> Packet:
             if additional_bits[0] == "0":
                 break
             i += 1
-        return Packet(version=version, type=type, literal=int(whole_number, 2), size=len(whole_number), subpackets=[])
+        return Packet(
+            version=version,
+            type=type,
+            literal=int(whole_number, 2),
+            size=len(whole_number),
+            subpackets=[],
+        )
     else:
         # Operator
         length_type = int(line[6])
@@ -66,7 +72,9 @@ def parser(line: str) -> Packet:
             while len(subpackets) < num_subpackets:
                 subpackets += [parser(line[start_of_data:])]
                 start_of_data += subpackets[-1].size
-        return Packet(version=version, type=type, size=start_of_data, subpackets=subpackets)
+        return Packet(
+            version=version, type=type, size=start_of_data, subpackets=subpackets
+        )
 
 
 def operate(packet: Packet):
@@ -97,9 +105,10 @@ def operate(packet: Packet):
         return 1 if operate(packet.subpackets[0]) < operate(packet.subpackets[1]) else 0
     elif packet_type == 7:
         # Equal to
-        return 1 if operate(packet.subpackets[0]) == operate(packet.subpackets[1]) else 0
+        return (
+            1 if operate(packet.subpackets[0]) == operate(packet.subpackets[1]) else 0
+        )
 
 
 def get_sum_of_versions(packet: Packet) -> int:
     return sum(get_sum_of_versions(p) for p in packet.subpackets) + packet.version
-    

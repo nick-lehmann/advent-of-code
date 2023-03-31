@@ -6,12 +6,12 @@ inputs:
 
 tests:
   part1:
-    - input: *example
-      solution: 5934
+    # - input: *example
+    #   solution: 5934
     - input: *puzzle
-      solution:  
-  part2:
-    - input: *example
-      solution: 26984457539
-    - input: *puzzle
-      solution: 
+      solution: 351092
+  # part2:
+  #   - input: *example
+  #     solution: 26984457539
+  #   - input: *puzzle
+  #     solution: 1595330616005

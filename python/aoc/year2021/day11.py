@@ -7,7 +7,7 @@ from dataclasses import dataclass
 @dataclass
 class Cell:
     value: int
-    neighbors: List['Cell']
+    neighbors: List["Cell"]
     row: int
     column: int
 
@@ -20,12 +20,12 @@ def read_grid(input_string: str, diagonal: bool) -> List[List[Cell]]:
         for column, char in enumerate(line):
             cell = Cell(value=int(char), neighbors=[], row=row, column=column)
             grid[row].append(cell)
-            
+
     # Add neighbor relation
     d = [(0, 1), (1, 0), (0, -1), (-1, 0)]
     if diagonal:
-        d += [(-1, -1), (-1, 1), (1, -1), (1, 1)]     
-    
+        d += [(-1, -1), (-1, 1), (1, -1), (1, 1)]
+
     for row in grid:
         for cell in row:
             for dx, dy in d:
@@ -33,10 +33,10 @@ def read_grid(input_string: str, diagonal: bool) -> List[List[Cell]]:
                     cell.neighbors.append(grid[cell.row + dx][cell.column + dy])
                 except IndexError:
                     pass
-    
+
     rows = len(grid)
     columns = len(grid[0])
-            
+
     return grid, rows, columns
 
 
@@ -51,8 +51,8 @@ class DumboOctopus(AOCTestCase):
     year = 2021
 
     def part1(self, content: str) -> int:
-        # grid, rows, columns = read_grid(content, diagonal=True)        
-        
+        # grid, rows, columns = read_grid(content, diagonal=True)
+
         # round = 0
         # flashes = 0
         # while round < 100:
@@ -62,27 +62,27 @@ class DumboOctopus(AOCTestCase):
         #         cell.value += 1
         #         if cell.value == 10:
         #             stack += [cell]
-                
+
         #     while stack:
         #         cell = stack.pop()
         #         for neighbor in cell.neighbors:
         #             if neighbor.value == 10:
-        #                 continue 
-                    
+        #                 continue
+
         #             neighbor.value += 1
         #             if neighbor.value == 10:
         #                 stack += [neighbor]
-            
+
         #     # TODO: Custom grid class with iterator
         #     for row, column in iterate_grid(rows, columns):
         #         cell = grid[row][column]
         #         if cell.value == 10:
         #             cell.value = 1
-        #             flashes += 1 
-            
+        #             flashes += 1
+
         #     print(f"Round {round}: {flashes}")
         #     round += 1
-        
+
         # return flashes
         data = {}
         for y, row in enumerate(self.lines(content)):
@@ -117,7 +117,6 @@ class DumboOctopus(AOCTestCase):
             total_flashes += flashes
             if step == 100:
                 return total_flashes
-
 
     def part2(self, content: str) -> int:
         data = {}

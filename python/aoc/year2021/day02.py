@@ -10,12 +10,12 @@ class Dive(AOCTestCase):
         lines = self.lines(content)
         pos, depth = 0, 0
         for line in lines:
-            command, value = line.split(' ')
-            if command == 'forward':
+            command, value = line.split(" ")
+            if command == "forward":
                 pos += int(value)
-            elif command == 'up':
+            elif command == "up":
                 depth -= int(value)
-            elif command == 'down':
+            elif command == "down":
                 depth += int(value)
         return pos * depth
 
@@ -23,14 +23,13 @@ class Dive(AOCTestCase):
         lines = self.lines(content)
         pos, depth, aim = 0, 0, 0
         for line in lines:
-            command, value = line.split(' ')
-            if command == 'forward':
+            command, value = line.split(" ")
+            if command == "forward":
                 pos += int(value)
-                depth += aim *  int(value)
-            elif command == 'up':
+                depth += aim * int(value)
+            elif command == "up":
                 aim -= int(value)
-            elif command == 'down':
+            elif command == "down":
                 aim += int(value)
 
         return pos * depth
-

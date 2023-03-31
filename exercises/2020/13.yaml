@@ -16,4 +16,4 @@ tests:
     - input: *example
       solution: 1068781
     - input: *puzzle
-      solution: 
+      solution: 1058443396696792

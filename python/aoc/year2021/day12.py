@@ -6,39 +6,40 @@ from collections import defaultdict
 START = "start"
 END = "end"
 
+
 class PassagePathing(AOCTestCase):
     day = 12
     year = 2021
 
-    def dfs(self, paths, start, visited, visit_twice) -> int:
-        if start == END:
+    paths: Dict[str, set]
+
+    def has_visited(self, node: str):
+        return {node} if node.islower() else set()
+
+    def find_paths(self, node: str, visited: set[str]) -> int:
+        """DFS Path finding."""
+        if node == "end":
             return 1
 
-        count = 0
-        for end in paths[start]:
-            if end not in visited:
-                tmp = {end} if end == end.lower() else set()
-                count += self.dfs(paths, end, visited | tmp, visit_twice)
-            elif visit_twice and end != START:
-                count += self.dfs(paths, end, visited, False)
+        if node.islower():
+            visited = visited.copy() | {node}
 
-        return count
+        next_nodes = self.paths[node] - visited
+        return sum(self.find_paths(next_node, visited) for next_node in next_nodes)
 
     def read(self, content) -> Dict[str, set]:
         lines = self.lines(content)
         paths = defaultdict(set)
         for line in lines:
-            a, b = line.split('-')
+            a, b = line.split("-")
             paths[a] |= {b}
             paths[b] |= {a}
         return paths
 
-
     def part1(self, content: str) -> int:
-        paths = self.read(content)           
-        return self.dfs(paths, START, {START}, False)
-        
+        self.paths = self.read(content)
+        return self.find_paths(START, set())
 
-    def part2(self, content: str) -> int:
-        paths = self.read(content)           
-        return self.dfs(paths, START, {START}, True)
+    # def part2(self, content: str) -> int:
+    #     paths = self.read(content)
+    #     return self.dfs(paths, START, {START}, True)

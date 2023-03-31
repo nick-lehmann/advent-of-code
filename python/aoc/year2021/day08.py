@@ -4,10 +4,12 @@ from ..utils import AOCTestCase
 from itertools import permutations
 from dataclasses import dataclass
 
+
 @dataclass
 class Part:
     input: List[str]
     output: List[str]
+
 
 display = {
     "abcefg": 0,
@@ -30,13 +32,13 @@ class SevenSegmentSearch(AOCTestCase):
     def read(self, content):
         parts = []
         for line in self.lines(content):
-            input, output = line.split(' | ')
+            input, output = line.split(" | ")
             parts += [Part(input.split(), output.split())]
         return parts
 
     def part1(self, content: str) -> int:
         parts = self.read(content)
-        unique_lengths = [2,3,4,7]
+        unique_lengths = [2, 3, 4, 7]
         total = 0
         for part in parts:
             for digit in part.output:

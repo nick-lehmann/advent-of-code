@@ -346,4 +346,4 @@ tests:
     - input: *example
       solution: 336
     - input: *puzzle
-      solution: 336
+      solution: 5813773056

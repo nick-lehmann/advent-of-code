@@ -3,6 +3,7 @@ from ..utils import AOCTestCase
 from dataclasses import dataclass
 import re
 
+
 @dataclass
 class Range:
     lower: int
@@ -15,7 +16,6 @@ class Area:
     y: Range
 
 
-
 def steps_for_dy(area: Area):
     y, steps, valid = 0, 0, []
     while y >= area.y.lower:
@@ -25,6 +25,7 @@ def steps_for_dy(area: Area):
         dy -= 1
         steps += 1
     return valid
+
 
 def can_land_dx(step):
     total = set()
@@ -44,14 +45,14 @@ class TrickShot(AOCTestCase):
     day = 17
     year = 2021
 
-    
     def read(self, content: str) -> Area:
         """
-        Parse a string like "target area: x=20..30, y=-10..-5" into a Area 
+        Parse a string like "target area: x=20..30, y=-10..-5" into a Area
         """
-        m = re.match(r"target area: x=(-?\d+)\.\.(-?\d+), y=(-?\d+)\.\.(-?\d+)", content)
+        m = re.match(
+            r"target area: x=(-?\d+)\.\.(-?\d+), y=(-?\d+)\.\.(-?\d+)", content
+        )
         return Area(Range(int(m[1]), int(m[2])), Range(int(m[3]), int(m[4])))
-        
 
     def part1(self, content: str) -> int:
         area = self.read(content)

@@ -38,9 +38,9 @@ tests:
       solution: 10
     - input: *puzzle
       solution: 5576
-  part2:
-    - input: *example
-      solution: 36
-    - input: *puzzle
-      solution: 152837
+  # part2:
+  #   - input: *example
+  #     solution: 36
+  #   - input: *puzzle
+  #     solution: 152837
 

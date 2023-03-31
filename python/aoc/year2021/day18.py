@@ -7,12 +7,12 @@ from dataclasses import dataclass
 
 @dataclass
 class Node:
-    left: Union['Node', int] = 0
-    right: Union['Node', int] = 0
+    left: Union["Node", int] = 0
+    right: Union["Node", int] = 0
     level: int = 0
-    parent: 'Node' = None
-    
-    def find_children(self) -> List['Node']:
+    parent: "Node" = None
+
+    def find_children(self) -> List["Node"]:
         if all(isinstance(x, int) for x in [self.left, self.right]):
             return [self]
 
@@ -34,25 +34,25 @@ class Snailfish(AOCTestCase):
         """
         ast_tree = ast.parse(line)
         l = ast_tree.body[0].value
-        
-        return self.parse_ast_list(l)
-    
-    def parse_ast_list(self, ast_node: Union[ast.List, ast.Constant], level=1) -> Node:
-        node = Node(level=level) 
 
-        ast_left, ast_right = ast_node.elts 
-        
+        return self.parse_ast_list(l)
+
+    def parse_ast_list(self, ast_node: Union[ast.List, ast.Constant], level=1) -> Node:
+        node = Node(level=level)
+
+        ast_left, ast_right = ast_node.elts
+
         if isinstance(ast_left, ast.List):
-            node.left = self.parse_ast_list(ast_left, level=level+1)
+            node.left = self.parse_ast_list(ast_left, level=level + 1)
             node.left.parent = node
         else:
-            node.left = ast_left.value 
-        
+            node.left = ast_left.value
+
         if isinstance(ast_right, ast.List):
-            node.right = self.parse_ast_list(ast_right, level=level+1)
+            node.right = self.parse_ast_list(ast_right, level=level + 1)
             node.right.parent = node
         else:
-            node.right = ast_right.value 
+            node.right = ast_right.value
 
         return node
 

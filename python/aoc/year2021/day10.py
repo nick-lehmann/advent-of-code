@@ -6,33 +6,27 @@ class SyntaxScoring(AOCTestCase):
     day = 10
     year = 2021
 
-    opening_brackets = {
-        ")": "(",
-        "}": "{",
-        "]": "[",
-        ">": "<"
-    }
+    opening_brackets = {")": "(", "}": "{", "]": "[", ">": "<"}
 
     scores = {
-        ')': 3,
-        ']': 57,
-        '}': 1197,
-        '>': 25137,
+        ")": 3,
+        "]": 57,
+        "}": 1197,
+        ">": 25137,
     }
 
     autocomplete_scores = {
-        '(': 1,
-        '[': 2,
-        '{': 3,
-        '<': 4,
+        "(": 1,
+        "[": 2,
+        "{": 3,
+        "<": 4,
     }
-
 
     def part1(self, content: str) -> int:
         lines = self.lines(content)
-        
+
         score = 0
-        
+
         for lineIndex, line in enumerate(lines):
             stack = []
             for char in line:
@@ -45,14 +39,14 @@ class SyntaxScoring(AOCTestCase):
                         break
                 elif char in self.opening_brackets.values():
                     stack.append(char)
-        
+
         return score
 
     def part2(self, content: str) -> int:
         lines = self.lines(content)
-        
+
         scores = []
-        
+
         for lineIndex, line in enumerate(lines):
             stack = []
             for char in line:
@@ -70,6 +64,6 @@ class SyntaxScoring(AOCTestCase):
                     score += self.autocomplete_scores[char]
                     print(f"{lineIndex + 1} {char} {score}")
                 scores += [score]
-                
+
         scores.sort()
         return scores[len(scores) // 2]

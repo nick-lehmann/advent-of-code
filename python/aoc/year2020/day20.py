@@ -34,10 +34,7 @@ class JurassicJigsaw(AOCTestCase):
         raw_tiles = content.split("\n\n")
         tiles = []
         for tile in raw_tiles:
-            tiles.append(Tile(
-                id=int(tile[0].split(" ")[1]),
-                content=tile[1:]
-            ))
+            tiles.append(Tile(id=int(tile[0].split(" ")[1]), content=tile[1:]))
 
     def part2(self, content: str) -> int:
         pass

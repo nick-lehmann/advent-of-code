@@ -4,16 +4,17 @@ from ..utils import AOCTestCase
 
 # Parse sentencnes like "fold along y=7" and return both the direction and the distance
 def parse_sentence(line):
-    last = line.split(' ')[-1]
-    direction, distance = last.split('=')
+    last = line.split(" ")[-1]
+    direction, distance = last.split("=")
     return direction, int(distance)
+
 
 class TransparentOrigami(AOCTestCase):
     day = 13
     year = 2021
 
     def part1(self, content: str) -> int:
-        points, folds = content.strip().split('\n\n')
+        points, folds = content.strip().split("\n\n")
 
         points = {tuple(map(int, line.split(","))) for line in points.split("\n")}
         for i, line in enumerate(folds.split("\n")):
@@ -38,12 +39,11 @@ class TransparentOrigami(AOCTestCase):
                 print(" #"[(x, y) in points], end="")
 
             print()
-            
+
         return 0
 
-
     def part2(self, content: str) -> int:
-        points, folds = content.strip().split('\n\n')
+        points, folds = content.strip().split("\n\n")
 
         points = {tuple(map(int, line.split(","))) for line in points.split("\n")}
         for i, line in enumerate(folds.split("\n")):
@@ -65,5 +65,5 @@ class TransparentOrigami(AOCTestCase):
                 print(" #"[(x, y) in points], end="")
 
             print()
-            
+
         return 0

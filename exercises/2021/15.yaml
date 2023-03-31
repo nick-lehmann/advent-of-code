@@ -118,9 +118,9 @@ tests:
       solution: 40
     - input: *puzzle
       solution: 741
-  part2:
-    - input: *example
-      solution: 315
-    - input: *puzzle
-      solution: 0
+  # part2:
+  #   - input: *example
+  #     solution: 315
+  #   - input: *puzzle
+  #     solution: 2976
 

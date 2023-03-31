@@ -4,6 +4,7 @@ from ..utils import AOCTestCase
 from dataclasses import dataclass
 from functools import lru_cache
 
+
 @dataclass
 class Player:
     number: int
@@ -19,13 +20,16 @@ class DiracDice(AOCTestCase):
     year = 2021
 
     def read(self, content) -> List[Player]:
-        return [Player(index+1, int(line.split()[-1])) for index, line in enumerate(self.lines(content))]
-            
+        return [
+            Player(index + 1, int(line.split()[-1]))
+            for index, line in enumerate(self.lines(content))
+        ]
+
     def part1(self, content: str) -> int:
         players = self.read(content)
         next_dice = 1
         total_dice_rolls = 0
-        
+
         print(players)
         while True:
             for player in players:
@@ -35,22 +39,28 @@ class DiracDice(AOCTestCase):
 
                 advance = sum(throws)
 
-                new_position = player.position + advance 
+                new_position = player.position + advance
                 while new_position > 10:
                     new_position -= 10
-                
-                player.position = new_position                
+
+                player.position = new_position
                 player.score += new_position
 
-                print(f"Player {player.number} rolls {throws} and moves to space {player.position} for a total score of {player.score}.")
+                print(
+                    f"Player {player.number} rolls {throws} and moves to space {player.position} for a total score of {player.score}."
+                )
 
                 if player.score >= 1000:
                     other_player = next(o for o in players if o is not player)
-                    print(f'Done. Total dice rolls: {total_dice_rolls}; other player score: {other_player.score}')
+                    print(
+                        f"Done. Total dice rolls: {total_dice_rolls}; other player score: {other_player.score}"
+                    )
                     return total_dice_rolls * other_player.score
 
     @lru_cache(maxsize=None)
-    def wins(self, scores: Tuple[int, int], positions: Tuple[int, int], turn: int) -> Tuple[int, int]:
+    def wins(
+        self, scores: Tuple[int, int], positions: Tuple[int, int], turn: int
+    ) -> Tuple[int, int]:
         if scores[0] >= 21:
             return 1, 0
         if scores[1] >= 21:
@@ -70,9 +80,7 @@ class DiracDice(AOCTestCase):
             wins2 += w2
         return wins1, wins2
 
-
     def part2(self, content: str) -> int:
         players = self.read(content)
         positions = tuple([player.position for player in players])
-        return max(self.wins((0,0), positions, 0))
-
+        return max(self.wins((0, 0), positions, 0))
