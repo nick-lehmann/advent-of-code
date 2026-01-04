@@ -1,0 +1,51 @@
+providers:
+  adventofcode:
+    config:
+      session: 53616c7465645f5fe9f90e14190eae122b82aa9d8ae56aeae68bac2fab6e26bd3dabecd5b12c3368718869884d1cd12d12f881cb6f98404a16565ff6d512c704 
+
+    parts:
+      - year: 
+          type: number
+      - day: 
+          type: number
+      - part: 
+          type: string
+
+    implementations:
+      rust:
+        path: "rust/src/aoc{year}/day{day}.rs"
+        solution: "test_{year}_{day}_{part}_{solution}"
+
+        runner:
+          # Relative to workspace folder
+          directory: "rust"
+
+          # All template variables of provider are available
+          command: "cargo test aoc{year}::day0{day}::test_{year}_0{day}_{part} -- --nocapture"
+
+          # Configures how the testdata is passed to the command
+          input: 
+            # stdin: Testdata is piped to stdin
+            # file: Add `file` template variable that resolves to testdata file
+            method: file
+
+          output:
+            # stdout: Test should print solution to stdout
+            # file: Test should write result into file passed by the `--output` flag.
+            method: stdout
+            extract:
+              regex: /Start solution\\n(.+)\\nEnd solution/
+
+      python:
+        path: "python"
+        solution: ""
+
+        runner:
+          command: ""
+          input:
+            method: stdin
+          output:
+            method: stdout
+
+  projecteuler:
+    implementations: {}

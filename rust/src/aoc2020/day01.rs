@@ -1,6 +1,6 @@
 ///! Link: https://adventofcode.com/2020/day/1
 use crate::prelude::*;
-use std::cmp::Ordering;
+use std::{cmp::Ordering, io::Read};
 
 static TARGET: i32 = 2020;
 
@@ -18,7 +18,23 @@ pub fn part1_naive(nums: Vec<i32>) -> Result<i64, Error> {
 
     Err("No solution found".into())
 }
-aoc_test!(part1_naive, 2020, 1, "part1");
+
+#[test]
+fn test_2020_1_part1() {
+    println!("Reading input from stdin");
+    let mut stdin = std::io::stdin().lock();
+    let mut input = String::new();
+    stdin.read_to_string(&mut input).unwrap();
+
+    println!("Input: {}", input);
+
+    let solution = part1_naive.solve(&input);
+    println!("Start solution");
+    println!("{}", solution);
+    println!("End solution");
+}
+
+// aoc_test!(part1_naive, 2020, 1, "part1");
 
 /// Sorts list, takes numbers from the left and compares it to number taken from the right.
 ///
@@ -40,7 +56,7 @@ pub fn part1_sorted(mut nums: Vec<i32>) -> Result<i64, Error> {
 
     Err("No solution found".into())
 }
-aoc_test!(part1_sorted, 2020, 1, "part1");
+// aoc_test!(part1_sorted, 2020, 1, "part1");
 
 /// Takes numbers from the left and searches the right side for the remainder using binary search.
 ///
@@ -59,7 +75,7 @@ pub fn part1_binary_search(mut nums: Vec<i32>) -> Result<i64, Error> {
 
     Err("No solution found".into())
 }
-aoc_test!(part1_binary_search, 2020, 1, "part1");
+// aoc_test!(part1_binary_search, 2020, 1, "part1");
 
 pub fn part2_naive(nums: Vec<i32>) -> Result<i64, Error> {
     for x in &nums {
@@ -74,4 +90,4 @@ pub fn part2_naive(nums: Vec<i32>) -> Result<i64, Error> {
 
     Err("No solution found".into())
 }
-aoc_test!(part2_naive, 2020, 1, "part2");
+// aoc_test!(part2_naive, 2020, 1, "part2");

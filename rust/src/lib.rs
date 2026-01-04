@@ -1,4 +1,6 @@
 pub mod aoc2020;
 pub mod aoc2022;
+pub mod aoc2024;
+pub mod aoc2025;
 pub mod gym;
 pub mod prelude;
